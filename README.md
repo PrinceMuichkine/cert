@@ -27,6 +27,18 @@ Run the `gen.sh` script to generate the necessary certificates and keys.
 
 Use the generated `server-cert.pem` and `server-key.pem` to configure your web server or other services to enable SSL/TLS.
 
+## Additional Information
+
+### Using `-nodes` Option
+
+The `-nodes` option in OpenSSL commands is used to skip the encryption of the private key. This means that the private key will not be password-protected. Here is an example of how to use the `-nodes` option:
+
+```bash
+openssl req -x509 -newkey rsa:4096 -days 365 -nodes -keyout ca-key.pem -out ca-cert.pem -subj "/C=MN/ST=Moon/L=Solar System/O=moon.africa/OU=Stellar Transportation/CN=*.moon.africa/emailAddress=hello@moon.africa"
+```
+
+In our example, the `-nodes` option ensures that the generated private key (`ca-key.pem`) is not encrypted.
+
 ## Purpose
 
 The primary purpose of this project is to provide a simple and automated way to generate and manage TLS certificates, ensuring secure communication for your services.
